@@ -1,4 +1,3 @@
-// layout.tsx
 'use client';
 
 import React, { ReactNode } from 'react';
@@ -30,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Link href="/register" className="nav-link">Register</Link>
               <Link href="/reset-password" className="nav-link">Reset Password</Link>
               <Link href="/tasks" className="nav-link">Tasks</Link>
+              <Link href="/profile" className="nav-link">Profile</Link> 
             </nav>
           </header>
           <main>
