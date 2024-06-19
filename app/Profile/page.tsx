@@ -1,6 +1,7 @@
-// src/app/profile/page.tsx
 import React, { useState, useRef } from 'react';
 import styles from './Profile.module.css';
+import ResetPassword from './reset/Reset';
+import Link from 'next/link';
 
 interface ProfileData {
   firstName: string;
@@ -11,6 +12,7 @@ interface ProfileData {
 }
 
 const Profile: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('details');
   const [profileData, setProfileData] = useState<ProfileData>({
     firstName: '',
     lastName: '',
@@ -29,7 +31,8 @@ const Profile: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes manejar el submit del formulario
+    // Lógica para manejar la actualización del perfil
+    console.log('Profile data submitted: ', profileData);
   };
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +50,48 @@ const Profile: React.FC = () => {
     fileInputRef.current?.click();
   };
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'details':
+        return (
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+              <div>
+                <label className={styles.label}>Nombres</label>
+                <input type="text" name="firstName" value={profileData.firstName} onChange={handleChange} className={styles.input} />
+              </div>
+              <div>
+                <label className={styles.label}>Apellidos</label>
+                <input type="text" name="lastName" value={profileData.lastName} onChange={handleChange} className={styles.input} />
+              </div>
+            </div>
+            <div className={styles.formGroup}>
+              <div>
+                <label className={styles.label}>Usuario</label>
+                <input type="text" name="username" value={profileData.username} onChange={handleChange} className={styles.input} />
+              </div>
+              <div>
+                <label className={styles.label}>Correo Electrónico</label>
+                <input type="email" name="email" value={profileData.email} onChange={handleChange} className={styles.input} />
+              </div>
+            </div>
+            <div className={styles.formGroupFull}>
+              <label className={styles.label}>Rol</label>
+              <select name="role" value={profileData.role} onChange={handleChange} className={styles.select}>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+              </select>
+            </div>
+            <button type="submit" className={styles.button}>Guardar cambios</button>
+          </form>
+        );
+      case 'resetPassword':
+        return <ResetPassword />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className={styles.profileFormContainer}>
       <div className={styles.container}>
@@ -61,42 +106,18 @@ const Profile: React.FC = () => {
             ) : (
               <img src="/profile-photo-placeholder.png" alt="foto del usuario" />
             )}
-            <input type="file" accept="image/*" ref={fileInputRef} onChange={handlePhotoChange} style={{ display: 'none' }} />
+            <input type="file" accept="image/*" ref={fileInputRef} onChange={handlePhotoChange} />
             <a href="#" onClick={handlePhotoClick}>Añadir foto</a>
           </div>
         </div>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <div>
-              <label className={styles.label}>Nombres</label>
-              <input type="text" name="firstName" value={profileData.firstName} onChange={handleChange} className={styles.input} />
-            </div>
-            <div>
-              <label className={styles.label}>Apellidos</label>
-              <input type="text" name="lastName" value={profileData.lastName} onChange={handleChange} className={styles.input} />
-            </div>
-          </div>
-          <div className={styles.formGroup}>
-            <div>
-              <label className={styles.label}>Usuario</label>
-              <input type="text" name="username" value={profileData.username} onChange={handleChange} className={styles.input} />
-            </div>
-            <div>
-              <label className={styles.label}>Correo Electrónico</label>
-              <input type="email" name="email" value={profileData.email} onChange={handleChange} className={styles.input} />
-            </div>
-          </div>
-          <div className={styles.formGroup}>
-            <div className={styles.formGroupFull}>
-              <label className={styles.label}>Rol</label>
-              <select name="role" value={profileData.role} onChange={handleChange} className={styles.select}>
-                <option value="Admin">Admin</option>
-                <option value="User">User</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" className={styles.button}>Guardar cambios</button>
-        </form>
+        <div className={styles.tabs}>
+          <div className={`${styles.tab} ${activeTab === 'details' ? styles.tabActive : ''}`} onClick={() => setActiveTab('details')}>Detalles</div>
+          <div className={`${styles.tab} ${activeTab === 'resetPassword' ? styles.tabActive : ''}`} onClick={() => setActiveTab('resetPassword')}>Cambiar Contraseña</div>
+          <Link href="/profile/reset">
+            <div className={`${styles.tab} ${activeTab === 'recoverPassword' ? styles.tabActive : ''}`} onClick={() => setActiveTab('recoverPassword')}>Recuperación de Contraseña</div>
+          </Link>
+        </div>
+        {renderTabContent()}
       </div>
     </div>
   );
