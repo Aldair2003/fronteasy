@@ -1,0 +1,113 @@
+body {
+  background-color: #e0f7fa; /* Fondo azul claro para toda la página */
+}
+
+.profile-container {
+  max-width: 1000px;
+  margin: 40px auto; /* Espacio en la parte superior e inferior */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  color: #777;
+}
+
+.profile .user-photo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinear a la derecha */
+  margin-bottom: 20px;
+}
+
+.profile .user-photo div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile .user-photo img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.photo-upload-input {
+  display: none;
+}
+
+.photo-upload-label {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.photo-upload-label:hover {
+  text-decoration: underline;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabs a {
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs a.active {
+  border-bottom: 2px solid #007bff;
+}
+
+.profile .form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile .form div {
+  flex: 1 1 calc(50% - 20px);
+  margin-bottom: 10px;
+}
+
+.profile .form label {
+  font-weight: bold;
+}
+
+.profile .form input,
+.profile .form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile .form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px; /* Añadir margen superior */
+}
+
+.profile .form button:hover {
+  background-color: #0056b3;
+}

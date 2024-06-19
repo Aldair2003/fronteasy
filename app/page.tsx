@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './layout';
 import { useRouter } from 'next/navigation';
-import './homepage.css'; // Asegúrate de que el archivo CSS exista en esta ubicación
-import axios from 'axios'; // Asegúrate de tener axios configurado correctamente
+import './homepage.css';
+import axios from '../src/axiosConfig'; // Asegúrate de importar la configuración de Axios correctamente
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -39,6 +39,7 @@ const HomePage: React.FC = () => {
           </div>
           <nav className="nav">
             <button className="nav-button" onClick={() => goToPage('/login')}>Contactar a ventas</button>
+            <button className="nav-button" onClick={() => goToPage('/profile')}>Perfil</button> {/* Botón para navegar a la página de perfil */}
             <button className="nav-button primary" onClick={() => goToPage('/register')}>Ir a mi cuenta</button>
           </nav>
         </header>

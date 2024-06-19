@@ -29,9 +29,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Link href="/" className="nav-link">Home</Link>
               <Link href="/login" className="nav-link">Login</Link>
               <Link href="/register" className="nav-link">Register</Link>
-              <Link href="/profile/reset" className="nav-link">Reset Password</Link>
+              <Link href="/reset-password" className="nav-link">Reset Password</Link>
               <Link href="/tasks" className="nav-link">Tasks</Link>
-              <Link href="/profile" className="nav-link">Profile</Link> 
+              <Link href="/profile" className="nav-link">Profile</Link> {/* Ruta corregida */}
             </nav>
           </header>
           <main>
