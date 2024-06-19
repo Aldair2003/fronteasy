@@ -1,20 +1,32 @@
-// app/page.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from './layout';
 import { useRouter } from 'next/navigation';
-import './homepage.css'; // Corrected the import statement
+import './homepage.css'; // Asegúrate de que el archivo CSS exista en esta ubicación
+import axios from 'axios'; // Asegúrate de tener axios configurado correctamente
 
 const HomePage: React.FC = () => {
   const router = useRouter();
+  const [data, setData] = useState<any>(null);
 
-  const goToLogin = () => {
-    router.push('/login');
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/data'); // Cambia esto por la URL de tu API
+        setData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  const goToRegister = () => {
-    router.push('/register');
+  const goToPage = (path: string) => {
+    router.push(path);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
@@ -26,8 +38,8 @@ const HomePage: React.FC = () => {
             <span className="logo-text">TaskEase</span>
           </div>
           <nav className="nav">
-            <button className="nav-button">Contactar a ventas</button>
-            <button className="nav-button primary" onClick={goToLogin}>Ir a mi cuenta</button>
+            <button className="nav-button" onClick={() => goToPage('/login')}>Contactar a ventas</button>
+            <button className="nav-button primary" onClick={() => goToPage('/register')}>Ir a mi cuenta</button>
           </nav>
         </header>
         <div className="content">
@@ -44,7 +56,7 @@ const HomePage: React.FC = () => {
             <span>✔️ Planificación de tareas</span>
             <span>✔️ Gestión de tareas recurrentes</span>
           </div>
-          <button className="cta-button" onClick={goToRegister}>Empezar ahora</button>
+          <button className="cta-button" onClick={() => goToPage('/register')}>Empezar ahora</button>
           <p className="cta-note">Gratis para siempre. No se necesita tarjeta de crédito.</p>
         </div>
         <footer className="footer">
