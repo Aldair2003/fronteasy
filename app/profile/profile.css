@@ -1,92 +1,113 @@
-/* profile.css */
+body {
+  background-color: #e0f7fa; /* Fondo azul claro para toda la página */
+}
 
 .profile-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+  max-width: 1000px;
+  margin: 40px auto; /* Espacio en la parte superior e inferior */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile-container:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+.profile h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-.profile-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #2c3e50;
-    font-size: 24px;
-    font-weight: bold;
+.profile p {
+  color: #777;
 }
 
-.profile-form,
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.profile .user-photo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinear a la derecha */
+  margin-bottom: 20px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
+.profile .user-photo div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.form-group label {
-    margin-bottom: 8px;
-    color: #2c3e50;
-    font-weight: bold;
-    font-size: 14px;
+.profile .user-photo img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
+.photo-upload-input {
+  display: none;
 }
 
-.form-group input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+.photo-upload-label {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.form-group p {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: #f7f7f7;
+.photo-upload-label:hover {
+  text-decoration: underline;
 }
 
-.update-button,
-.edit-button {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    align-self: center;
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
-.update-button:hover,
-.edit-button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+.tabs a {
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+  border-bottom: 2px solid transparent;
 }
 
-.message {
-    text-align: center;
-    margin-top: 20px;
-    color: #28a745;
-    font-size: 16px;
-    font-weight: bold;
+.tabs a.active {
+  border-bottom: 2px solid #007bff;
+}
+
+.profile .form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile .form div {
+  flex: 1 1 calc(50% - 20px);
+  margin-bottom: 10px;
+}
+
+.profile .form label {
+  font-weight: bold;
+}
+
+.profile .form input,
+.profile .form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile .form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px; /* Añadir margen superior */
+}
+
+.profile .form button:hover {
+  background-color: #0056b3;
 }
